@@ -1,3 +1,6 @@
+// require('dotenv').config();
+const PORT = process.env.PORT || 3000;
+
 // connecting to database
 const mongoose = require('mongoose');
 mongoose.connect("mongodb://127.0.0.1:27017/Id_Card_Generetor");
@@ -68,6 +71,6 @@ app.set('views','views');
 
 
 //server
-app.listen(3000, (req, res)=>{
-    console.log('listening on port 3000');
+app.listen(PORT, (req, res)=>{
+    console.log(`listening on port ${PORT}`);
 })
