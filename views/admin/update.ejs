@@ -1,0 +1,64 @@
+<%- include('../common/header') %>
+<%- include('sidebar') %>
+  <div class="admin-main-container-content">
+      <div class="card bordered p-5 m-md-5">
+          <div class="card-dbody">
+            <form action="" method="post">
+                <h4 class="card-title text-center fw-bolder text-danger">Update User</h4>
+                <div class="p-2">
+                  <% 
+                    if (typeof message !== "undefined"){
+                  %>
+                    <!-- <p class="text-danger"><%= message %></p> -->
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                      <%= message %>
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                  <%
+                    }
+                  %>
+        
+                </div>
+        
+                <div class="mb-3">
+                  <label for="fname" class="form-label">Name</label>
+                  <input type="text" class="form-control" id="fname" name="FlName" value="<%= user.name %>" aria-describedby="emailHelp">
+                </div>
+            
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="email" name="email" value="<%= user.email %>" aria-describedby="emailHelp">
+                </div>
+            
+                <div class="mb-3">
+                  <label for="password" class="form-label">Contact</label>
+                  <input type="text" class="form-control" id="MobNo" name="MobNo" value="<%= user.contact %>">
+                </div>
+
+                <div class="mb-3">
+                  <label for="type" class="form-label">Type</label>
+                  <select class="form-select" id="type" name="type" aria-label="Default select example">
+                    <option value="0" <% if(user.is_admin === 0){ %>selected <%}%>>User</option>
+                    <option value="1" <% if(user.is_admin === 1){ %>selected <%}%>>Admin</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label for="type" class="form-label">Status</label>
+                  <select class="form-select" id="type" name="status" aria-label="Default select example">
+                    <option value="0" <% if(user.is_verified === 0){ %>selected <%}%> >Un-Verified</option>
+                    <option value="1" <% if(user.is_verified === 1){ %>selected <%}%>>Verified</option>
+                  </select>
+                </div>
+                <input type="hidden" name="id" vlaue="<%= user._id %>">
+
+                <div class="d-flex justify-content-center">
+                  <button type="submit" class="btn btn-danger text-center">Submit</button>
+                </div>
+              </form>
+          </div>
+      </div>
+  </div>
+  
+
+  <%- include('../common/footer') %>

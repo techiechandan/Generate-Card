@@ -1,0 +1,467 @@
+@import url('https://fonts.googleapis.com/css2?family=Uchen&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap');
+
+
+body{
+    background-color: #dbd8e3;
+    /* font-family: 'Lato', sans-serif; */
+    /* font-family: 'Nunito', sans-serif; */
+    /* font-family: 'Oswald', sans-serif; */
+    font-family: 'Poppins', sans-serif;
+    background-color: #e7eaf6;
+    transition: all 0.3s;
+
+}
+
+#about-page-container{
+    margin-top: 4rem !important;
+    margin-bottom: 4rem !important;
+    /* height: 100vh; */
+}
+
+#homepageimage{
+    width: 100%;
+    height: 100vh;
+}
+
+.copyrightSiteName{
+    text-decoration: none;
+}
+
+/*************************************Dashbord & Sidebar*****************************************/
+.admin-sidebar{
+    height:100%;
+    min-width: 350px;
+    max-width: 350px;
+    position:fixed;
+    background-color:#fff;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 1rem;
+}
+
+.brand-name{
+    font-family: 'Kanit', sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+.admin-sidebar ul li{
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.admin-sidebar ul .active {
+    background-color: rgb(205, 13, 61);
+    color: white;
+    border-radius: 10px;
+}
+
+.admin-sidebar ul li a{
+    font-family: 'Uchen', serif;
+    color:#000;
+    font-size: 1.5rem;
+}
+.admin-sidebar ul li .active{
+    color: #fff;
+}
+
+.admin-sidebar ul li a i{
+    padding-right: 10px;
+}
+
+/* main content */
+.admin-main-container{
+    margin-left: 350px;
+}
+.admin-main-container-content{
+    margin-left: 350px;
+    padding:1rem;
+}
+
+#SideNavbar{
+    display: none;
+}
+
+
+
+@media(max-width: 768px){
+
+    .admin-sidebar{
+        height:100%;
+        min-width: 350px;
+        max-width: 350px;
+        position:fixed;
+        background-color:#fff;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: 1rem;
+        overflow-y: scroll;
+        transition: all 0.3s;
+        margin-left: -350px;
+        z-index: 1;
+    }
+
+    .admin-sidebar.active{
+        margin-left: 0;
+    }
+
+    .admin-main-container{
+        margin-top:3rem;
+        margin-left: 0;
+    }
+    .admin-main-container-content{
+        margin-top: 3rem;
+        min-height: 100vh;
+        margin-left: 0;
+        text-align: justify;
+    }
+
+    #SideNavbar{
+        display: block;
+    }
+}
+
+
+/************************footer************************/
+
+
+#footer{
+    background-color: #020205;
+}
+
+#socials{
+    color: red;
+}
+
+
+
+
+
+
+/* ******************************id card page *********************************/
+/* * {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    background-color: #000;
+} */
+.id-main {
+    width: 100%;
+    /* height: 100vh; */
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.id-container {
+    /* width: 600px;
+    height: 450px; */
+    /* background-color: #282d35; */
+    background-color: #fff;
+    /* border-radius: 15px; */
+    display: flex;
+    align-items: center;
+    /* justify-content: space-around; */
+    /* box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08),
+        0 2px 2px rgba(0, 0, 0, 0.12),
+        0 4px 4px rgba(0, 0, 0, 0.16),
+        0 8px 8px rgba(0, 0, 0, 0.20); */
+
+}
+
+
+.id-back {
+    position: relative;
+    width: 225px;
+    height: 375px;
+    background-color: aliceblue;
+}
+
+.id-front {
+    position: relative;
+    width: 225px;
+    height: 375px;
+    background-color: aliceblue;
+    
+}
+.id-front {
+    margin-right: 2px;  
+}
+
+.id-border {
+    box-sizing: border-box;
+    position: absolute;
+    width: 215px;
+    height: 365px;
+    left: 5px;
+    top: 5px;
+    border: 1px solid #000000;
+}
+
+.id-logo {
+    position: absolute;
+    width: 220px;
+    height: 60px;
+    left: 2px;
+    top: 10px;
+    background: url("../images/id_logo.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+.id-logo-back {
+    position: absolute;
+    width: 206px;
+    height: 60px;
+    left: 8px;
+    top: 314px;
+    background: url("../images/college.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.logo-back {
+    position: absolute;
+    width: 120px;
+    height:  120px;
+    left: 20px;
+    top: 110px;
+    background: url("../images/logoBack.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    /* background-position: center; */
+}
+
+
+.stroke {
+    position: absolute;
+    width: 225px;
+    height: 100px;
+    left: 0px;
+    z-index: 1;
+    top: 90px;
+}
+
+.id-photo {
+    box-sizing: border-box;
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    left: 55px;
+    top: 80px;
+    z-index: 2;
+    border-radius: 50%;
+    border: 2px solid white;
+    /* background: url("../images/id-photo.png"); */
+    /* background-size: contain; */
+    /* background-repeat: no-repeat; */
+}
+
+.name {
+    position: absolute;
+    text-align: center;
+    width: 215px;
+    height: 20px;
+    left: 4px;
+    top: 210px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 5px;
+    text-transform: uppercase;
+}
+
+.course {
+    position: absolute;
+    text-align: center;
+    width: 215px;
+    height: 20px;
+    left: 4px;
+    top: 230px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 5px;
+    text-transform: uppercase;
+}
+
+.roll {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 160px;
+    height: 20px;
+    left: 33px;
+    top: 245px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 5px;
+}
+
+.birth {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 160px;
+    height: 20px;
+    left: 33px;
+    top: 250px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 5px;
+}
+
+.blood {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 160px;
+    height: 20px;
+    left: 33px;
+    top: 260px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 5px;
+}
+
+.mobile {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 160px;
+    height: 20px;
+    left: 33px;
+    top: 275px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 5px;
+}
+
+.validity {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 160px;
+    height: 20px;
+    left: 33px;
+    top: 290px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 5px;
+}
+
+.one {
+    position: absolute;
+    width: 50px;
+    height: 10px;
+    left: 10px;
+    top: 307px;
+    font-weight: 500;
+    font-size: 8px;
+    line-height: 19px;
+    text-transform: capitalize;
+}
+
+.two {
+    position: absolute;
+    width: 50px;
+    height: 10px;
+    /* left: 173px;
+    top: 284px; */
+    top: 307px;
+    left: 183px;
+    font-weight: 500;
+    font-size: 8px;
+    line-height: 19px;
+    text-transform: capitalize;
+}
+
+/* for the image of director signature  */
+.two img{
+    margin: 15px 0px 0px 5px;
+    border-radius: 7px;
+    position: absolute;
+    top: 0px;
+    height: 20px;
+    width: 40px;
+}
+
+.id-footer {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 206px;
+    height: 45px;
+    left: 10px;
+    top: 322px;
+    background: #C59901;
+}
+
+.id-footer p {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 9px;
+    line-height: 0;
+    margin: 0  0 5px;
+}
+
+.qrCode{
+
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 70px;
+    top: 15px;
+}
+
+.instructions{
+    position: absolute;
+    top:190px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 9px;
+    line-height: 9px;
+    text-transform: capitalize;
+}
+.instructions .instrcs{
+    /* list-style: none; */
+    padding-right: 10px;
+    /* margin-left: 25px; */
+    margin-bottom: 5px;
+    
+}
+.instructions .instrcs p{
+    margin: 0 0 5px;
+}
+
+.my-btn-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+
+.my-btn{
+    cursor: pointer;
+    padding:10px;
+    margin: 10px;
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid white;
+}
+
+@media only screen and (max-width:760px){
+    .id-container{
+        flex-direction: column;
+    }
+    .id-front {
+        margin-right: 0;
+        margin-bottom: 2px;  
+    }
+}

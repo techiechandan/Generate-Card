@@ -1,0 +1,259 @@
+<%- include('./common/header') %>
+  <%- include('./common/navbar') %>
+    <div class="container-fluid my-5 p-md-5 py-5">
+      <div class="container">
+        <form action="/idcard" method="POST" id="idcardform" class="card bordered mx-md-5 p-5" enctype="multipart/form-data">
+          <h4 class="card-title text-center fw-bolder text-danger">ID Card Form</h4>
+          <div class="my-3">
+            <div class="row justify-content-around">
+              <div class="col-12 col-md-6 mb-3">
+                <label for="photo" class="form-label">Photo</label>
+                <input type="file" class="form-control" id="photo" name="photo" aria-describedby="emailHelp">
+              </div>
+            </div>
+          </div>
+
+          <div class="my-3">
+            <div class="row">
+              <div class="col-12 col-md-6 mb-3">
+                <label for="fname" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="fname" name="fname" aria-describedby="emailHelp">
+              </div>
+              <div class="col-12 col-md-6">
+                <label for="lname" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="lname" name="lname" aria-describedby="emailHelp">
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="row">
+              <div class="col-12 col-md-6 mb-3">
+                <label for="birthDate" class="form-label">Date of Birth</label>
+                <input type="date" class="form-control" id="birthDate" name="birthDate" aria-describedby="emailHelp">
+              </div>
+
+              <div class="col-12 col-md-6 mb-3">
+                <label for="bloodGroup" class="form-label">Blood Group</label>
+                <select class="form-select" name="bloodGroup" id="bloodGroup" aria-label="Default select example">
+                  <option selected value="O+">O+</option>
+                  <option value="O-">O-</option>
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="row">
+              <div class="col-12 col-md-6 mb-3">
+                <label for="course" class="form-label">Course</label>
+                <select class="form-select" name="course" id="course" aria-label="Default select example">
+                  <option selected value="BCA">BCA</option>
+                  <option value="BBA">BBA</option>
+                  <option value="BJMC">BJMC</option>
+                  <option value="B-COM">B-COM</option>
+                  <option value="PGDM">PGDM</option>
+                </select>
+              </div>
+
+              <div class="col-12 col-md-6 mb-3">
+                <label for="status" class="form-label">Status</label>
+                <select class="form-select" name="status" id="status" aria-label="Default select example">
+                  <option selected value="Hosteller">Hosteller</option>
+                  <option value="Hosteller">Dayscholar</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="row">
+              <div class="col mb-3">
+                <label for="addYear" class="form-label">Addmission Year</label>
+                <select class="form-select" name="addYear" id="addYear" aria-label="Default select example">
+                  <option id="addYear1" selected value=""></option>
+                  <option id="addYear2" value=""></option>
+                  <option id="addYear3" value=""></option>
+                  <option id="addYear4" value=""></option>
+                </select>
+              </div>
+              <div class="col">
+                <label for="SeComYear" class="form-label">Session Completion Year</label>
+                <select class="form-select" name="SeComYear" id="SeComYear" aria-label="Default select example">
+                  <option id="SeComYear1" selected value=""></option>
+                  <option id="SeComYear2" value=""></option>
+                  <option id="SeComYear3" value=""></option>
+                  <option id="SeComYear4" value=""></option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="row">
+              <div class="col-12 col-md-5 mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+              </div>
+              <div class="col-12 col-md-4 mb-3">
+                <label for="mobNo" class="form-label">Mobile No.</label>
+                <input type="text" class="form-control" id="mobNo" name="mobNo" aria-describedby="emailHelp">
+              </div>
+              <div class="col-12 col-md-3 mb-3">
+                <label for="rollNo" class="form-label">Roll No.</label>
+                <input type="text" class="form-control" id="rollNo" name="rollNo" aria-describedby="emailHelp">
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Guardian's Name</label>
+            <input type="text" class="form-control" id="guardianName" name="guardianName" aria-describedby="emailHelp">
+          </div>
+
+          <div class="mb-3">
+            <div class="row">
+              <div class="col-md-4 col-12 mb-3">
+                <label for="district" class="form-label">District</label>
+                <input type="text" id="district" name="district" class="form-control">
+              </div>
+
+              <div class="col-md-4 col-12 mb-3">
+                <label for="village" class="form-label">Village/City/Town</label>
+                <input type="text" id="village" name="village" class="form-control">
+              </div>
+
+              <div class="col-md-4 col-12 mb-3">
+                <label for="pincode" class="form-label">Pin - Code</label>
+                <input type="text" id="pincode" name="pincode" class="form-control">
+              </div>
+            </div>
+          </div>
+          <button type="button" id="submitBtn" class="btn btn-danger text-center">Submit</button>
+        </form>
+      </div>
+    </div>
+    <script>
+
+      function DateData() {
+        const date = new Date();
+        let currentYear = date.getFullYear();
+
+        document.getElementById("addYear1").innerHTML = currentYear
+        document.getElementById("addYear1").value = currentYear
+
+        document.getElementById("addYear2").innerHTML = currentYear - 1
+        document.getElementById("addYear2").value = currentYear - 1
+
+        document.getElementById("addYear3").innerHTML = currentYear - 2
+        document.getElementById("addYear3").value = currentYear
+        document.getElementById("addYear4").value = currentYear - 3
+        document.getElementById("addYear4").innerHTML = currentYear - 3
+
+
+        document.getElementById("SeComYear1").innerHTML = currentYear + 3
+        document.getElementById("SeComYear1").value = currentYear + 3
+
+        document.getElementById("SeComYear2").innerHTML = currentYear + 2
+        document.getElementById("SeComYear2").value = currentYear + 2
+
+        document.getElementById("SeComYear3").innerHTML = currentYear + 1
+        document.getElementById("SeComYear3").value = currentYear + 1
+
+        document.getElementById("SeComYear4").innerHTML = currentYear
+        document.getElementById("SeComYear4").value = currentYear
+        // console.log(currentYear);
+      }
+      DateData();
+
+      const formValid = () =>{
+        let fname = document.getElementById("fname").value;
+        let lname = document.getElementById("lname").value;
+        let dob = new Date(document.getElementById("birthDate").value);
+        let bgroup = document.getElementById("bloodGroup").value;
+        let course = document.getElementById("course").value;
+        let status = document.getElementById("status").value;
+        let addYear = new Date(document.getElementById("addYear").value);
+        let SeComYear = new Date(document.getElementById("SeComYear").value);
+        let email = document.getElementById("email").value;
+        let mobNo = document.getElementById("mobNo").value;
+        let rollNo = document.getElementById("rollNo").value;
+        let guardianName = document.getElementById("guardianName").value;
+        let district = document.getElementById("district").value;
+        let village = document.getElementById("village").value;
+        let pincode = document.getElementById("pincode").value;
+        
+        let curDate = new Date();
+
+
+        var nameRegex = /^[a-zA-Z]{2,30}$/;
+        var numRegex = /^[0-9]{10}$/;
+        var pinRegx = /^[0-9]{6}$/;
+        var rollRegex = /^[a-zA-Z0-9]/;
+        var bloodRegex = /^[a-zA-Z\+\s]/;
+        var pNameRegex = /^[a-zA-Z\s]/;
+        var VillageRegex = /^[a-zA-Z\s\,]/;
+        var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+        
+        if (!fname.match(nameRegex)) {
+          alert("Please enter a valid first name");
+        }
+        else if(!lname.match(nameRegex)) {
+          alert("Please enter a valid last name");
+        }
+        else if((dob.getDate() < 0 || dob.getMonth()+1 < 0 || dob.getFullYear()> curDate.getFullYear())){
+          alert("Please enter a valid birth date");
+        }
+        else if(!bgroup.match(bloodRegex)){
+          alert("Please enter a valid blood group!");
+        }
+        else if(!course.match(nameRegex)){
+          alert("Please enter a valid course name!");
+        }
+        else if(!status.match(nameRegex)){
+          alert("Please enter a valid status!");
+        }
+        // else if((addYear.getDate() < 0 || addYear.getMonth()+1 < 0 || addYear.getFullYear()+3 !== curDate.getFullYear())){
+        //   alert("Please enter a valid admission date!");
+        // }
+        // else if((SeComYear.getDate() < 0 || SeComYear.getMonth()+1 < 0 || SeComYear.getFullYear()-3 !== curDate.getFullYear())){
+        //   alert("Please enter a valid course completion date!");
+        // }
+        else if(!email.match(emailRegex)){
+          alert("Please enter a valid email!");
+        }
+        else if(!mobNo.match(numRegex)){
+          alert("Please enter a valid contact number!");
+        }
+        else if(!rollNo.match(rollRegex)){
+          alert("Please enter a valid roll number!");
+        }
+        else if(!guardianName.match(pNameRegex)){
+          alert("Please enter a valid guardian name!");
+        }
+        else if(!district.match(nameRegex)){
+          alert("Please enter a valid district name!");
+        }
+        else if(!village.match(pNameRegex)){
+          alert("Please enter a valid village name!");
+        }
+        else if(!pincode.match(pinRegx)){
+          alert("Please enter a valid pincode!");
+        }
+        else{
+          document.getElementById("idcardform").submit();
+        }
+      }
+
+      document.getElementById("submitBtn").addEventListener('click',formValid);
+
+    </script>
+    <%- include('./common/footerSection') %>
+      <%- include('./common/footer') %>

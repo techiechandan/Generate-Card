@@ -1,0 +1,237 @@
+<%- include('./common/header') %>
+<%- include('./common/navbar') %>
+
+
+<!-- <div class="container-fluid mt-5 p-md-5 py-5">
+    <img src="<%= src %>" alt="" class="" >
+</div> -->
+
+
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+            * {
+                margin: 0px;
+                padding: 0px;
+                font-family: 'Poppins', sans-serif;
+                font-weight: bold;
+            }
+
+            body {
+                background-color: black;
+                height: 100vh;
+            }
+
+            .mycontainer {
+                /*height: 100vh;*/
+                height:450px ;
+                padding:5rem;
+                margin-top:5rem;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                flex-wrap: wrap;
+                box-sizing: border-box;
+                flex-direction: row;
+            }
+
+            .front {
+                height: 375px;
+                width: 225px;
+                position: relative;
+                /* border-radius: 10px; */
+                /* background-image: url('id\ card\ ism1.png'); */
+                background-size: 225px 375px;
+                background-repeat: no-repeat;
+            }
+
+            .tab {
+                padding-right: 30px;
+            }
+
+            .top img {
+                height: 90px;
+                width: 90px;
+                background-color: #e6ebe0;
+                border-radius: 57px;
+                position: absolute;
+                left: 68px;
+                top: 109px;
+                object-fit: content;
+                border: 3px solid rgba(255, 255, 255, .2);
+
+            }
+
+            .ename {
+                position: absolute;
+                top: 212px;
+                left: 50px;
+                color: rgb(8, 0, 0);
+                font-size: 16px;
+                justify-content:center;
+            }
+            .course{
+                display:flex;
+                justify-content:center;
+            }
+
+            .signature {
+                position: absolute;
+                top: 75%;
+                height: 80px;
+                width: 160px;
+            }
+
+            .signature img {
+                margin: 15px 0px 0px 5px;
+                border-radius: 7px;
+                position: absolute;
+                top: 0px;
+                left: 160px;
+                height: 20px;
+                width: 40px;
+
+            }
+
+            .backend {
+                height: 375px;
+                width: 225px;
+                position: relative;
+                /* border-radius: 10px; */
+                background-image: url('id\ card\ ism.png');
+                background-size: 225px 375px;
+                background-repeat: no-repeat;
+                margin-left: 308px;
+                margin-top: -375px;
+            }
+
+            .details1 {
+                position: absolute;
+                top: 260px;
+                text-transform: capitalize;
+                font-size: 7.5px;
+                /*text-emphasis: spacing;*/
+                margin-left: 25px;
+            }
+            .details1 p{
+                margin: 0;
+            }
+
+            .details {
+                position: absolute;
+                top: 37px;
+                text-transform: capitalize;
+                font-size: 7.5px;
+                text-emphasis: spacing;
+                margin-left: 25px;
+            }
+
+            .details .Address {
+                width: 60%;
+                text-align: justify;
+            }
+            .details .Address {
+                width: 60%;
+                text-align: justify;
+            }
+
+            .qrcode img {
+                height: 85px;
+                width: 85px;
+                text-align: center;
+                margin: 5px;
+            }
+
+            .qrcode {
+                text-align: center;
+                position: absolute;
+                top: 7.5%;
+                left: 115px;
+            }
+
+            .downloadBtn{
+                display:flex;
+                justify-content:center;
+                margin-top: 4rem;
+                margin-bottom: 4rem;
+            }
+            .btn {
+                padding: 10px;
+                background-color: red;
+                color: white;
+                border-radius: 10px;
+            }
+
+            .btn:hover {
+                padding: 10px;
+                background-color: red;
+                color: white;
+                border-radius: 10px;
+                border: 1px solid white;
+            }
+
+        </style>
+        <div class="mycontainer" >
+            <div class="padding" id="id_card_">
+                <div class="front" style="background-image: url('/images/frontpage.png')">
+                    <!-- <div class="top">
+                        <img src="{{ profilePhoto.profilePicture.url}}" alt="">
+                    </div> -->
+                    <div class="">
+                        <div class="ename">
+                            <div class="course"><span><%= name %></span></div>
+                            <div class="course"><span><%= course %></span></div>
+                        </div>
+                        <div class="details1">
+                            <p><strong>Roll No. : </strong><%= rollNo %></p>
+                            <p><strong>Mobile No. : </strong><%= contact %></p>
+                            <p><strong>Blood Group : </strong><%= bGroup %></p>
+                            <p><b>Guardian's name : </b><%= GuardianName %></p>
+                            <p><strong>Till Valid : </strong><%= endYear %></p>
+                        </div>
+                        <div class="signature">
+                            <img src="images/signature.png" alt="Signature">
+                        </div>
+                    </div>
+                </div>
+                <!-- second Part  start-->
+                <div class="backend" style="background-image: url('/images/backpage.png')">
+                    <div class="">
+                        <div class="details">
+                            <!-- <p><b>contact no. : </b>{{ parentsContact}}</p> -->
+                            <div class="Address"><span>Address : </span><%= address %></div>
+                        </div>
+
+                        <div class="qrcode">
+                            <img src="<%= src %>" alt="">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- second part End -->
+        </div>
+        <div class="downloadBtn">
+            <button class="btn" id="download_btn">Download</button>
+        </div>
+
+        <script src="js/html2canvas.min.js"></script>
+        <script>
+            document.getElementById("download_btn").onclick = function () {
+                const idCardImage = document.getElementById("id_card_");
+                html2canvas(idCardImage).then((canvas) => {
+                    const idCardFile = canvas.toDataURL("image/png");
+                    var anchor = document.createElement("a");
+                    anchor.setAttribute("href", idCardFile);
+                    anchor.setAttribute("Download", "myIdCard.png");
+                    anchor.click();
+                    anchor.remove();
+                });
+            };
+        </script>
+    </body>
+</html>
+
+<%- include('./common/footerSection') %>
+<%- include('./common/footer') %>

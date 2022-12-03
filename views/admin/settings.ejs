@@ -1,0 +1,35 @@
+<%- include('sidebar.ejs') %>
+    <div class="admin-main-container-content">
+        <div class="card p-5">
+            <h4 class="h4 text-center text-danger fw-bolder mb-5 ">Website Details</h4>
+
+            <form class="row g-3" action="" >
+                    <div class="col-md-6 col-12 mb-3">
+                        <label for="brandName" class="form-label">Brand Name</label>
+                        <input type="text" class="form-control" id="brandName" aria-describedby="brandHelp" disabled  value="Techie Chandan">
+                        <div id="brandHelp" class="form-text">Brand name will appear in the Navbar</div>
+                    </div>
+
+                    <div class="col-md-6 col-12 mb-3">
+                        <label for="brandName" class="form-label">Home Page Background Image</label>
+                        <input type="file" class="form-control" id="brandName" aria-describedby="brandHelp">
+                        <div id="brandHelp" class="form-text">
+                            This image will appear as background image of home page.
+                        </div>
+                    </div>
+
+
+                    <div class="mb-2 mx-3 text-center">
+                            <button type="button" class="btn btn-success px-3" id="EditBtn">Edit</button>
+                            <button type="submit" class="btn btn-danger" style="display:none" id="BrandSaveBtn">Save</button>
+                    </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.getElementById("EditBtn").addEventListener("click", function () {
+            document.getElementById("brandName").removeAttribute("disabled");
+            document.getElementById("BrandSaveBtn").style = "display:inline-block"
+            document.getElementById("EditBtn").style = "display:none"
+        })
+    </script>

@@ -1,0 +1,86 @@
+<%- include('./common/header') %>
+<%- include('./common/navbar') %>
+
+<main class="id-main">
+    <div class="id-container" id="id_card_">
+        <div class="id-front">
+            <div class="id-logo"></div>
+            <img class="stroke" src="./images/stroke.svg">
+            <div class="id-border"></div>
+            <!-- <div class="id-photo">
+            </div> -->
+            <img class="id-photo" src="./uploads/<%= std.photo %>" alt="photo">
+            <h2 class="name"><%= std.name %></h2>
+            <h4 class="course"><%= std.course %></h2>
+            <div class="roll">
+                <span>Roll No. :</span>
+                <span><%= std.rollNo %></span>
+            </div>
+            <div class="blood">
+                <span>Blood Group :</span>
+                <span><%= std.bGroup %></span>
+            </div>
+            <div class="mobile">
+                <span>Mobile No. :</span>
+                <span><%= std.contact %></span>
+            </div>
+            <div class="validity">
+                <span>Valid Till :</span>
+                <span><%= std.endYear %></span>
+            </div>
+
+            <span class="one"><%=std.status%></span>
+            <span class="two">
+                Director
+                <!-- <img src="images/signature.png" alt="Signature"> -->
+            </span>
+            <div class="id-footer">
+                <p>International School of Management</p>
+                <p>Sarari-Usari Road, Khagaul, Patna-801105</p>
+                <p>Ph: 9308885505, 9771499900</p>
+            </div>
+        </div>
+
+        <div class="id-back">
+            <img class="stroke" src="./images/strokeBack.svg">
+            <div class="id-border"></div>
+            <img src="<%= src %>" alt="qrcode" class="qrCode">
+            <div class="instructions">
+                <ul>
+                    <li class="instrcs">
+                        <p>
+                            every student must wear his /her identity card.
+                        </p>
+                    </li>
+                    <li class="instrcs">
+                        <p>
+                            this card is applicable for language lab and library use also
+                        </p>
+                    </li>
+                    <li class="instrcs">
+                        <p>
+                            loss of card should be reported to institute office immediately.
+                        </p>
+                    </li>
+                    <li class="instrcs">
+                        <p>
+                            duplicate card will be issued by the institute on payment of Rs.200/-
+                        </p>
+                    </li>
+                    <li class="instrcs">
+                        <p>
+                            anybody who finds this card,other than the owner is requested to send it to the institute’s address.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <div class="id-logo-back"></div>
+        </div>
+    </div>
+</main>
+<div class="my-btn-box">
+    <button href="idcard/" class="my-btn" id="download_btn">Download</button>
+</div>
+
+<%- include('./common/footerSection') %>
+<%- include('./common/footer') %>

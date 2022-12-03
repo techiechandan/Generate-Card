@@ -1,0 +1,18 @@
+<%- include('../common/header') %>
+  <%- include('sidebar') %>
+    <div class="admin-main-container-content">
+      <div class="d-flex justify-content-center align-items-center"style="height: 100vh;">
+        <div class="container card bordered">
+          <div class="card-body">
+            <% if(typeof message !=='undefined' ){ %>
+              <p class="fs-5 text-center mt-3 text-danger">
+                <%= message %>
+              </p>
+              <% } %>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <%- include('../common/footer') %>

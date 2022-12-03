@@ -1,0 +1,52 @@
+
+        <div class="container-fluid bg-danger fixed-top" id="SideNavbar">
+            <botton class="btn btn-danger text-light fs-5 m-1" id="SidebarBtn"><i class="fa-solid fa-bars"></i></botton><span class="text-light">
+                
+            </span>
+        </div>
+
+        <div class="admin-sidebar" id="adminSidebar">
+            <h4 class="h4 brand-name text-danger">IDCG</h4>
+            <hr>
+            <ul class="list-unstyled">
+                <li class="">
+                    <a href="/admin/dashboard" class=" sideMenu text-decoration-none fw-bolder">
+                        <i class="fa-solid fa-align-justify"></i>Dashboard
+                    </a>
+                </li>
+
+                <li class="">
+                    <a href="/admin/users" class=" sideMenu text-decoration-none fw-bolder">
+                        <i class="fa-solid fa-user"></i>Users
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/admin/cards" class=" sideMenu text-decoration-none fw-bolder">
+                        <i class="fa-solid fa-user"></i>Cards
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+            </script>
+        <script src="/js/script.js"></script>
+        <script>
+            window.onload = function () {
+                var li = document.querySelector(".active");
+                li.querySelector('.sideMenu').classList.add("active");
+            }
+
+
+            document.getElementById("SidebarBtn").addEventListener("click",function(){
+                if(document.getElementById("adminSidebar").classList.contains('active')){
+                    document.getElementById("adminSidebar").classList.remove("active");
+                }
+                else{
+                    document.getElementById("adminSidebar").classList.add("active");
+                }
+            })
+
+        </script>
+

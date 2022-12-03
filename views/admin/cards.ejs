@@ -1,0 +1,67 @@
+<%- include('../common/header') %>
+<%- include('sidebar') %>
+  <div class="admin-main-container-content">
+    <div class="row justify-content-between">
+      <div class="col-12 col-md-12">
+        <div class="card mb-3">
+          <h4 class="h4 text-center p-2 text-danger border-bottom fw-bolder">Users</h4>
+        </div>
+
+        <div class="container ">
+          <table class="table table-hover shadow">
+            <thead>
+              <tr class="table-primary">
+                <th scope="col">Sl No.</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Course</th>
+                <th scope="col">Generade By</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%
+                if(cards.length>0){
+                  for(let i=0; i < cards.length; i++){
+              %>
+              <tr class="table-secondary">
+                <th class="px-4" scope="row"><%=i+1%></th>
+                <td><%=cards[i].name%></td>
+                <td class="word-wrap"><%=cards[i].email%></td>
+                <td><%= cards[i].course %></td>
+                <td><%= cards[i].GeneratedBy %></td>
+                <td class="">
+                  <a class="text-decoration-none px-2" href="/admin/cards/update-card?id=<%= cards[i]._id %>">
+                    <button class="btn btn-success px-4">
+                      <i class="fa-regular fa-pen-to-square"></i>
+                    </button>
+                  </a>
+
+                  <a href="/admin/cards/delete-card?id=<%= cards[i]._id %>">
+                    <button class="btn btn-danger px-4">
+                      <i class="far fa-trash-alt"></i>
+                    </button>
+                  </a>
+                </td>
+              </tr>
+              <%
+                  }
+                }
+                else{
+              %>
+              <tr>
+                <td>
+                  User not found!
+                </td>
+              </tr>
+              <%
+                }
+              %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%- include('../common/footer') %>
