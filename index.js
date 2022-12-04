@@ -3,7 +3,7 @@ const PORT = process.env.PORT || 3000;
 
 // connecting to database
 const mongoose = require('mongoose');
-mongoose.connect("mongodb://127.0.0.1:27017/Id_Card_Generetor");
+mongoose.connect("mongodb+srv://chandansmart:MyAtlasPassword@cluster0.xh1r4zv.mongodb.net/Id_Card_Generator?retryWrites=true&w=majority");
 
 // importing bodyParser
 const boydparser = require("body-parser");
