@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "It is a webapplication developed using node-js,express,and mongodb to  generate id cardwith qr-code.",
   "main": "index.js",
-  "engines":{
-    "node":"14.x"
+  "engines": {
+    "node": "14.x"
   },
   "scripts": {
     "start": "node index.js",
