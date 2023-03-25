@@ -1,0 +1,46 @@
+<%- include('./common/header') %>
+    <%- include('./common/navbar') %>
+        <div class="container my-5 p-md-5 py-5">
+            <div class="card-body">
+                <form action="/idcards" method="POST" id="idcardform" class="card bordered mx-md-5 p-5"
+                    enctype="multipart/form-data">
+                    <h4 class="card-title text-center fs-2 fw-bolder text-danger mb-5">ID Card Form</h4>
+                    <div class="row g-3 justify-content-center">
+                        <div class="col-md-6 col-12">
+                            <div class="mb-3">
+                                <!-- <label for="fname" class="form-label">Select File</label> -->
+                                <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="form-control" id="FlName" name="fname"
+                                    aria-describedby="emailHelp">
+                            </div>
+                            <div class="mt-5 text-center">
+                                <input type="submit" id="submitBtn" class="btn btn-danger text-center" value="Submit" />
+                            </div>
+                            <div class="mt-5">
+                                <span>Note:-</span>
+                                <ul class="list-style-none" type="circle">
+                                    <li>
+                                        The Excel file only be accepted...!
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script>
+            document.getElementById("FlName").addEventListener("change",(event)=>{
+                const file = event.target.files[0];
+                if(file){
+                    const extension = file.name.slice(file.name.lastIndexOf(".")+1);
+                    if(!(extension === "xlsx" || extension === "csv" || extension === "excel")){
+                        alert("Please select valid file and try again!");
+                        document.getElementById("submitBtn").disabled = true; 
+                    }else{
+                        document.getElementById("submitBtn").disabled = false;
+                    }
+                }
+            });
+        </script>
+    <%- include('./common/footerSection') %>
+<%- include('./common/footer') %>

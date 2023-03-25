@@ -1,5 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Uchen&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Uchen&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kanit:wght@300;400;500;600&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jost&family=Kanit:wght@300;400;500;600&display=swap');
 
 
 body{
@@ -7,17 +9,18 @@ body{
     /* font-family: 'Lato', sans-serif; */
     /* font-family: 'Nunito', sans-serif; */
     /* font-family: 'Oswald', sans-serif; */
-    font-family: 'Poppins', sans-serif;
+    /* font-family: 'Poppins', sans-serif; */
+    font-family: 'Jost', sans-serif;
     background-color: #e7eaf6;
     transition: all 0.3s;
 
 }
 
-#about-page-container{
+/* #about-page-container{
     margin-top: 4rem !important;
     margin-bottom: 4rem !important;
-    /* height: 100vh; */
-}
+    height: 100vh;
+} */
 
 #homepageimage{
     width: 100%;
@@ -41,6 +44,7 @@ body{
 }
 
 .brand-name{
+    /* font-family: 'Kanit', sans-serif; */
     font-family: 'Kanit', sans-serif;
     font-weight: 800;
     font-size: 1.5rem;
@@ -125,9 +129,9 @@ body{
 /************************footer************************/
 
 
-#footer{
+/* #footer{
     background-color: #020205;
-}
+} */
 
 #socials{
     color: red;
@@ -149,12 +153,14 @@ body{
 } */
 .id-main {
     width: 100%;
-    /* height: 100vh; */
+    height: 100vh;
     margin-top: 100px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
+
 
 .id-container {
     /* width: 600px;
@@ -455,6 +461,9 @@ body{
     border-radius: 10px;
     border: 1px solid white;
 }
+
+
+
 
 @media only screen and (max-width:760px){
     .id-container{

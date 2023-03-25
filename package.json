@@ -1,7 +1,7 @@
 {
   "name": "idcardgenerator",
   "version": "1.0.0",
-  "description": "It is a webapplication developed using node-js,express,and mongodb to  generate id cardwith qr-code.",
+  "description": "It is a webapplication developed using node-js,express,and mongodb to  generate id card with qr-code.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -13,6 +13,7 @@
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.0",
     "cookie-parser": "^1.4.6",
+    "cookie-session": "^2.0.0",
     "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
     "express": "^4.18.1",
@@ -21,6 +22,7 @@
     "mongoose": "^6.5.3",
     "multer": "^1.4.5-lts.1",
     "nodemon": "^2.0.19",
-    "qrcode": "^1.5.1"
+    "qrcode": "^1.5.1",
+    "xlsx": "^0.18.5"
   }
 }

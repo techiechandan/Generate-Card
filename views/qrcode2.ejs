@@ -1,0 +1,128 @@
+<%- include('./common/header') %>
+    <%- include('./common/navbar') %>
+
+        <main class="id-main">
+            <% if(std.length> 0){
+                console.log(std.length);
+                for(let i = 0; i < std.length; i++){ %>
+                    <div class="id-container" id="id_card_">
+                        <div class="id-front">
+                            <div class="id-logo"></div>
+                            <img class="stroke" src="./images/stroke.svg">
+                            <div class="id-border"></div>
+                            <!-- <div class="id-photo"></div> -->
+                            <img class="id-photo" src="./uploads/<%= std[i].photo %>" alt="photo">
+                            <h2 class="name">
+                                <%= std[i].name %>
+                            </h2>
+                            <h4 class="course">
+                                <%= std[i].course %>
+                            </h4>
+                            <div class="roll">
+                                <span>Roll No. :</span>
+                                <span>
+                                    <%= std[i].rollNo %>
+                                </span>
+                            </div>
+                            <div class="blood">
+                                <span>Blood Group :</span>
+                                <span>
+                                    <%= std[i].bGroup %>
+                                </span>
+                            </div>
+                            <div class="mobile">
+                                <span>Mobile No. :</span>
+                                <span>
+                                    <%= std[i].contact %>
+                                </span>
+                            </div>
+                            <div class="validity">
+                                <span>Valid Till :</span>
+                                <span>
+                                    <%= std[i].endYear %>
+                                </span>
+                            </div>
+
+                            <span class="one">
+                                <%=std[i].status%>
+                            </span>
+                            <span class="two">
+                                Director
+                                <!-- <img src="images/signature.png" alt="Signature"> -->
+                            </span>
+                            <div class="id-footer">
+                                <p>International School of Management</p>
+                                <p>Sarari-Usari Road, Khagaul, Patna-801105</p>
+                                <p>Ph: 9308885505, 9771499900</p>
+                            </div>
+                        </div>
+
+                        <div class="id-back">
+                            <img class="stroke" src="./images/strokeBack.svg">
+                            <div class="id-border"></div>
+                            <img src="<%= src[i] %>" alt="qrcode" class="qrCode">
+                            <div class="instructions">
+                                <ul>
+                                    <li class="instrcs">
+                                        <p>
+                                            every student must wear his /her identity card.
+                                        </p>
+                                    </li>
+                                    <li class="instrcs">
+                                        <p>
+                                            this card is applicable for language lab and library use also
+                                        </p>
+                                    </li>
+                                    <li class="instrcs">
+                                        <p>
+                                            loss of card should be reported to institute office immediately.
+                                        </p>
+                                    </li>
+                                    <li class="instrcs">
+                                        <p>
+                                            duplicate card will be issued by the institute on payment of Rs.200/-
+                                        </p>
+                                    </li>
+                                    <li class="instrcs">
+                                        <p>
+                                            anybody who finds this card,other than the owner is requested to send it to
+                                            the institute’s address.
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="id-logo-back"></div>
+                        </div>
+                    </div>
+                    <div></div>
+                    <br><br>
+                    <% } } else { %>
+                        <span class="display-4">Opps...,Card detailsl not found!</span>
+                        <% } %>
+        </main>
+        <div class="my-btn-box">
+            <button href="idcard/" class="my-btn" id="download_btn">Download</button>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+            integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
+            document.getElementById("download_btn").onclick = function () {
+                // const idCardImage = document.getElementById("id_card_");
+                const idCardImage = document.getElementsByClassName("id-container");
+                // console.log(idCardImage.length);
+                for (let i = 0; i < idCardImage.length; i++) {
+                    html2canvas(idCardImage[i]).then((canvas) => {
+                        const idCardFile = canvas.toDataURL("image/png");
+                        var anchor = document.createElement("a");
+                        anchor.setAttribute("href", idCardFile);
+                        anchor.setAttribute("Download", "myIdCard.png");
+                        anchor.click();
+                        anchor.remove();
+                    });
+                }
+            };
+
+        </script>
+        <%- include('./common/footerSection') %>
+            <%- include('./common/footer') %>

@@ -2,12 +2,14 @@
 const subscriber = require("../models/subsModel");
 const user = require('../models/userModel');
 const student = require('../models/studentModel');
+//importing additional packegs
+const fs = require("fs");
+const XLSX =require("xlsx");
 
 
 
 //importing qrcode
 const qr = require("qrcode");
-
 
 const index = async (req, res) => {
   try {
@@ -49,7 +51,6 @@ const about = async (req, res) => {
         title: "About | Id Card Generator",
       });
     }else{
-      const userMatch = await user.findOne({id:req.session.user});
       res.render("about", {
         home: "",
         about: "active",
@@ -57,9 +58,8 @@ const about = async (req, res) => {
         user: req.session.user,
         title: "About | Id Card Generator",
       });
-    }
-    
-  } catch {
+    } 
+  } catch(error) {
     console.log(error.message);
   }
 };
@@ -80,6 +80,8 @@ const idCard = async (req, res) => {
     console.log(error.message);
   }
 };
+
+
 
 
 
@@ -105,7 +107,7 @@ const qrCode = async (req, res, next) => {
         District: req.body.district,
         Village: req.body.village,
         PinCode: req.body.pincode,
-        GeneratedBy:req.session.user
+        GeneratedBy: await req.session.user,
       });
       const newStudent = await studentData.save();
       if(newStudent){
@@ -154,6 +156,156 @@ const qrCode = async (req, res, next) => {
 
 
 
+
+// Card by Excel File
+const Cards = async(req,res)=>{
+  try{
+    const userMatch = await user.findOne({id:req.session.user});
+    res.render("idCardFormExcel", {
+      home: "",
+      about: "",
+      idcard: "active",
+      user: userMatch,
+      title: "Generate-Card | Id Card Generator",
+    });   
+  }catch(error){
+    console.log(error.message);
+  }
+}
+
+
+
+
+
+const generateCards = async (req,res)=>{
+  try{
+    const StudentDataList = [];
+    const StudentQrCodeList = [];
+    const imageArray = [];
+    if(req.file){
+      // reading excel file
+      const file = XLSX.readFile(req.file.path);
+      if(file){
+        for(let i = 0; i<file.SheetNames.length; i++){
+          const tempFile = XLSX.utils.sheet_to_json(file.Sheets[file.SheetNames[i]]);
+          for(let i = 0; i< tempFile.length; i++){
+            const email = tempFile[i].email;
+            const studentMatch = await student.findOne({email:email});
+            
+            if(!studentMatch){
+              //writing photo
+              const imagename = `image${Date.now()}.jpg`;
+              fs.readFile(tempFile[i].photo,(err,data)=>{
+                try {
+                  if(err){
+                    throw err;
+                  }  
+                  fs.writeFileSync(`public/uploads/${imagename}`, data);
+                }catch (error) {
+                  console.log(error.message);
+                }
+              });
+              imageArray.push(imagename);
+              const tempDob = new Date(tempFile[i].birth);
+              const dob = `${tempDob.getFullYear()}-0${tempDob.getMonth()+1}-${tempDob.getDate()}`;
+              StudentDataList.push({
+                photo:imagename,
+                name:tempFile[i].name,
+                birth:dob,
+                bGroup:tempFile[i].bGroup,
+                course:tempFile[i].course,
+                status:tempFile[i].status,
+                startYear:tempFile[i].startYear,
+                endYear:tempFile[i].endYear,
+                email:tempFile[i].email,
+                contact:tempFile[i].contact,
+                rollNo:tempFile[i].rollNo,
+                GuardianName:tempFile[i].GuardianName,
+                District:tempFile[i].District,
+                Village:tempFile[i].Village,
+                PinCode:tempFile[i].PinCode,
+                GeneratedBy:await req.session.user
+              });
+
+              let data;
+              data =
+                "Name: " + tempFile[i].name +"\n" +
+                "D.O.B: " + tempFile[i].birth +"\n" +
+                "BloodGroup: " + tempFile[i].bGroup+"\n"+
+                "Course: " + tempFile[i].course+"\n"+
+                "Session: " + tempFile[i].startYear+" - "+ tempFile[i].endYear+"\n"+
+                "Email: " + tempFile[i].email+"\n"+
+                "Mobile No : " + tempFile[i].contact+"\n"+
+                "Roll No: " + tempFile[i].rollNo+"\n"+
+                "Guardian's Name: " + tempFile[i].GuardianName+"\n"+
+                "Address: " + tempFile[i].Village+","+tempFile[i].District+","+tempFile[i].PinCode;
+
+
+              if (data.length === 0){
+                res.send("Empty data!");
+              }else{
+                qr.toDataURL(data, (err, src) => {
+                  if (err) {
+                    res.send("Failed to generate qr code, please try again.");
+                  } else {
+                    StudentQrCodeList.push(src);
+                  }
+                });
+              }
+            }
+          }
+        }
+
+        //deleting the stored excel file....
+        if(file){
+          fs.unlink("public/temp/"+ req.file.filename,(err)=>{
+            if(err){
+              console.log("file not deleted!");
+            }
+          });
+        }
+      }
+
+      const userMatch = await user.findOne({id:req.session.user});
+      if(StudentDataList.length !== 0){
+        const StudentsLists = await student.insertMany(StudentDataList);
+        if(StudentsLists){
+          res.render("qrcode2", {
+            home: "",
+            about: "",
+            idcard: "active",
+            src: StudentQrCodeList,
+            user: userMatch,
+            title: "Generate | Id Card Generator",
+            std: StudentsLists,
+          });
+        }
+      }else{
+        // deleting stored images
+        for(let i=0; i< imageArray.length; i++){
+          fs.unlink("public/temp/"+ imageArray[i],(err)=>{
+            if(err){
+              console.log("stored image not deleted!");
+            }
+          });
+        }
+
+        res.render("idCardFormExcel", {
+          home: "",
+          about: "",
+          idcard: "active",
+          user: userMatch,
+          title: "Generate-Card | Id Card Generator",
+        }); 
+      }
+    }
+  }catch(error){
+    console.log(error.message);
+  }
+}
+
+
+
 // const send = async (req, res)=>{
 //   try {
 //     res.redirect('/id-card-form');
@@ -161,6 +313,9 @@ const qrCode = async (req, res, next) => {
 //     console.log(error.message);
 //   }
 // }
+
+
+
 
 
 // for subscription
@@ -241,5 +396,7 @@ module.exports = {
   qrCode,
   Subscribe,
   invalidRoute,
+  Cards,
+  generateCards,
   // send,
 };

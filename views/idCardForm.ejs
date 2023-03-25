@@ -1,14 +1,22 @@
 <%- include('./common/header') %>
   <%- include('./common/navbar') %>
     <div class="container-fluid my-5 p-md-5 py-5">
-      <div class="container">
-        <form action="/idcard" method="POST" id="idcardform" class="card bordered mx-md-5 p-5" enctype="multipart/form-data">
-          <h4 class="card-title text-center fw-bolder text-danger">ID Card Form</h4>
+      <div class="card-body">
+        <form action="/idcard" method="POST" id="idcardform" class="card bordered mx-md-5 p-5"
+          enctype="multipart/form-data">
+
+          <h4 class="card-title text-center fs-2 fw-bolder text-danger mb-5">ID Card Form</h4>
+
+          <img class="mx-auto border border-dark rounded-circle shadow" id="prevImage"
+            style="height:150px; width:150px; " alt="">
+
+          <button class="btn btn-danger mt-4 mx-auto text-center col-4" id="upload-button">Upload Photo</button>
+
           <div class="my-3">
             <div class="row justify-content-around">
               <div class="col-12 col-md-6 mb-3">
-                <label for="photo" class="form-label">Photo</label>
-                <input type="file" class="form-control" id="photo" name="photo" aria-describedby="emailHelp">
+                <input type="file" accept="image/*" class="form-control" id="photo" name="photo"
+                  aria-describedby="emailHelp" onchange="showPreview(event)" hidden>
               </div>
             </div>
           </div>
@@ -77,7 +85,7 @@
               <div class="col mb-3">
                 <label for="addYear" class="form-label">Addmission Year</label>
                 <select class="form-select" name="addYear" id="addYear" aria-label="Default select example">
-                  <option id="addYear1" selected value=""></option>
+                  <option id="addYear1" value=""></option>
                   <option id="addYear2" value=""></option>
                   <option id="addYear3" value=""></option>
                   <option id="addYear4" value=""></option>
@@ -86,7 +94,7 @@
               <div class="col">
                 <label for="SeComYear" class="form-label">Session Completion Year</label>
                 <select class="form-select" name="SeComYear" id="SeComYear" aria-label="Default select example">
-                  <option id="SeComYear1" selected value=""></option>
+                  <option id="SeComYear1" value=""></option>
                   <option id="SeComYear2" value=""></option>
                   <option id="SeComYear3" value=""></option>
                   <option id="SeComYear4" value=""></option>
@@ -157,8 +165,8 @@
         document.getElementById("addYear4").innerHTML = currentYear - 3
 
 
-        document.getElementById("SeComYear1").innerHTML = currentYear + 3
-        document.getElementById("SeComYear1").value = currentYear + 3
+        document.getElementById("SeComYear1").innerHTML = (currentYear + 3)
+        document.getElementById("SeComYear1").value = (currentYear + 3)
 
         document.getElementById("SeComYear2").innerHTML = currentYear + 2
         document.getElementById("SeComYear2").value = currentYear + 2
@@ -172,7 +180,7 @@
       }
       DateData();
 
-      const formValid = () =>{
+      const formValid = () => {
         let fname = document.getElementById("fname").value;
         let lname = document.getElementById("lname").value;
         let dob = new Date(document.getElementById("birthDate").value);
@@ -188,7 +196,7 @@
         let district = document.getElementById("district").value;
         let village = document.getElementById("village").value;
         let pincode = document.getElementById("pincode").value;
-        
+
         let curDate = new Date();
 
 
@@ -201,23 +209,23 @@
         var VillageRegex = /^[a-zA-Z\s\,]/;
         var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-        
+
         if (!fname.match(nameRegex)) {
           alert("Please enter a valid first name");
         }
-        else if(!lname.match(nameRegex)) {
+        else if (!lname.match(nameRegex)) {
           alert("Please enter a valid last name");
         }
-        else if((dob.getDate() < 0 || dob.getMonth()+1 < 0 || dob.getFullYear()> curDate.getFullYear())){
+        else if ((dob.getDate() < 0 || dob.getMonth() + 1 < 0 || dob.getFullYear() > curDate.getFullYear())) {
           alert("Please enter a valid birth date");
         }
-        else if(!bgroup.match(bloodRegex)){
+        else if (!bgroup.match(bloodRegex)) {
           alert("Please enter a valid blood group!");
         }
-        else if(!course.match(nameRegex)){
+        else if (!course.match(nameRegex)) {
           alert("Please enter a valid course name!");
         }
-        else if(!status.match(nameRegex)){
+        else if (!status.match(nameRegex)) {
           alert("Please enter a valid status!");
         }
         // else if((addYear.getDate() < 0 || addYear.getMonth()+1 < 0 || addYear.getFullYear()+3 !== curDate.getFullYear())){
@@ -226,34 +234,58 @@
         // else if((SeComYear.getDate() < 0 || SeComYear.getMonth()+1 < 0 || SeComYear.getFullYear()-3 !== curDate.getFullYear())){
         //   alert("Please enter a valid course completion date!");
         // }
-        else if(!email.match(emailRegex)){
+        else if (!email.match(emailRegex)) {
           alert("Please enter a valid email!");
         }
-        else if(!mobNo.match(numRegex)){
+        else if (!mobNo.match(numRegex)) {
           alert("Please enter a valid contact number!");
         }
-        else if(!rollNo.match(rollRegex)){
+        else if (!rollNo.match(rollRegex)) {
           alert("Please enter a valid roll number!");
         }
-        else if(!guardianName.match(pNameRegex)){
+        else if (!guardianName.match(pNameRegex)) {
           alert("Please enter a valid guardian name!");
         }
-        else if(!district.match(nameRegex)){
+        else if (!district.match(nameRegex)) {
           alert("Please enter a valid district name!");
         }
-        else if(!village.match(pNameRegex)){
+        else if (!village.match(pNameRegex)) {
           alert("Please enter a valid village name!");
         }
-        else if(!pincode.match(pinRegx)){
+        else if (!pincode.match(pinRegx)) {
           alert("Please enter a valid pincode!");
         }
-        else{
+        else {
           document.getElementById("idcardform").submit();
         }
       }
 
-      document.getElementById("submitBtn").addEventListener('click',formValid);
+      document.getElementById("submitBtn").addEventListener('click', formValid);
+
+
+      // for photo preview
+      let fileInput = document.getElementById("photo");
+      document.getElementById("upload-button").addEventListener('click', (event) => {
+        event.preventDefault();
+        fileInput.click();
+      })
+
+
+      const showPreview = (event) => {
+        if (event.target.files[0]) {
+          const maxSize = 1 * 1024 * 1024;
+          if (event.target.files[0].size > maxSize) {
+            prompt("Image size is larger than 1MB!");
+            event.target = "";
+          } else {
+            const imageurl = URL.createObjectURL(event.target.files[0]);
+            document.getElementById('prevImage').src = imageurl;
+          }
+        }
+      }
+
+      // fileInput.addEventListener('change',showPreview(event));
 
     </script>
-    <%- include('./common/footerSection') %>
-      <%- include('./common/footer') %>
+  <%- include('./common/footerSection') %>
+<%- include('./common/footer') %>

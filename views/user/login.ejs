@@ -8,26 +8,29 @@
     </style>
 
 
-    <div class="container-fluid my-5 p-4 d-flex align-items-center justify-content-center " id="loginFormContainer">
+    <div class="container-fluid  d-flex justify-content-around align-items-center " id="loginFormContainer">
       <div class="card bordered">
-        <div class="card-body p-5">
+        <div class="card-body m-3">
           <form action="" method="post" class="">
             <h4 class="card-title text-center fw-bolder text-danger">Login</h4>
-              <% if (typeof message !=="undefined" ){ %>
+            <% if (typeof message !=="undefined" ){ %>
               <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 <%= message %>
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>
               <% } %>
-                <div class="mb-3">
-                  <label for="email" class="form-label">Email address</label>
-                  <input type="email" class="form-control" id="email" name="email" placeholder="username@email.com"
-                    aria-describedby="emailHelp">
-                </div>
 
-                <div class="mb-3">
-                  <label for="password" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="password" name="password">
+                <div class="row">
+                  <div class="col-12 mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="username@email.com"
+                      aria-describedby="emailHelp">
+                  </div>
+
+                  <div class="col-12 mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" data-toggle="password" class="form-control" id="password" name="password">
+                  </div>
                 </div>
                 <div class="mb-3 d-flex justify-content-center">
                   <button type="submit" class="btn btn-danger text-center">Submit</button>
@@ -38,4 +41,4 @@
     </div>
 
 
-  <%- include('../common/footer') %>
+    <%- include('../common/footer') %>

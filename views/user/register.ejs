@@ -1,104 +1,101 @@
 <%- include('../common/header') %>
-<%- include('../common/navbar') %>
+  <%- include('../common/navbar') %>
 
-<div class="container-fluid my-5  d-flex justify-content-around align-items-center" style="height: 100vh;">
-  <div class="card bordered p-5">
-    <div class="card-body ">
-      <form action="" method="post" id="regForm">
-        <h4 class="card-title text-center fw-bolder text-danger">Registration</h4>
-        <div class="p-2">
-          <% 
-            if (typeof message !== "undefined"){
-          %>
-            <!-- <p class="text-danger"><%= message %></p> -->
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-              <%= message %>
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="container-fluid my-5  d-flex justify-content-around align-items-center" style="height: 100vh;">
+      <div class="card bordered p-md-5 ">
+        <div class="card-body m-3">
+          <form action="" method="post" id="regForm">
+            <h4 class="card-title text-center fw-bolder text-danger">Registration</h4>
+            <div class="p-2">
+              <% if (typeof message !=="undefined" ){ %>
+                <!-- <p class="text-danger"><%= message %></p> -->
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                  <%= message %>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <% } %>
             </div>
-          <%
-            }
-          %>
+            <div class="row">
+              <div class="col-12 col-md-6 mb-3">
+                <label for="fname" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="fname" name="fname" aria-describedby="emailHelp">
+              </div>
 
-        </div>
+              <div class="col-12 col-md-6 mb-3">
+                <label for="lname" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="lname" name="lname" aria-describedby="emailHelp">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-md-6 mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+              </div>
 
-        <div class="mb-3">
-          <label for="fname" class="form-label">First Name</label>
-          <input type="text" class="form-control" id="fname" name="fname" aria-describedby="emailHelp">
+              <div class="col-12 col-md-6 mb-3">
+                <label for="password" class="form-label">Contact</label>
+                <input type="text" class="form-control" id="MobNo" name="MobNo">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-md-6 mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password">
+              </div>
+
+              <div class="col-12 col-md-6 mb-3">
+                <label for="cpassword" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="cpassword" name="cpassword">
+              </div>
+            </div>
+            <div class="d-flex justify-content-center">
+              <button type="button" id="subBtn" class="btn btn-danger text-center">Submit</button>
+            </div>
+          </form>
         </div>
-    
-        <div class="mb-3">
-          <label for="lname" class="form-label">Last Name</label>
-          <input type="text" class="form-control" id="lname" name="lname" aria-describedby="emailHelp">
-        </div>
-    
-        <div class="mb-3">
-          <label for="email" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
-        </div>
-    
-        <div class="mb-3">
-          <label for="password" class="form-label">Contact</label>
-          <input type="text" class="form-control" id="MobNo" name="MobNo">
-        </div>
-        <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control" id="password" name="password">
-        </div>
-    
-        <div class="mb-3">
-          <label for="cpassword" class="form-label">Confirm Password</label>
-          <input type="password" class="form-control" id="cpassword" name="cpassword">
-        </div>
-        <div class="d-flex justify-content-center">
-          <button type="button" id="subBtn" class="btn btn-danger text-center">Submit</button>
-        </div>
-      </form>
+      </div>
     </div>
-  </div>  
-</div>
-<script>
-  const validRegForm = ()=>{
-    let fname = document.getElementById("fname").value;
-    let lname = document.getElementById("lname").value;
-    let contact = document.getElementById("MobNo").value;
-    let email = document.getElementById("email").value;
-    let pass = document.getElementById("password").value;
-    let cpass = document.getElementById("cpassword").value;
+    <script>
+      const validRegForm = () => {
+        let fname = document.getElementById("fname").value;
+        let lname = document.getElementById("lname").value;
+        let contact = document.getElementById("MobNo").value;
+        let email = document.getElementById("email").value;
+        let pass = document.getElementById("password").value;
+        let cpass = document.getElementById("cpassword").value;
 
 
-    var nameRegex = /^[a-zA-Z]{2,30}$/;
-    var numRegex = /^[0-9]{10}$/;
-    var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    var passRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,15}$/;
+        var nameRegex = /^[a-zA-Z]{2,30}$/;
+        var numRegex = /^[0-9]{10}$/;
+        var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        var passRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,15}$/;
 
-    if(!(fname.match(nameRegex))){
-      alert("Please enter a valid first name");
-    }
-    else if(!lname.match(nameRegex)){
-      alert("Please enter a valid name");
-    }
-    else if(!email.match(emailRegex)){
-      alert("Please enter a valid email");
-    }
-    else if(!contact.match(numRegex)){
-      alert("Please enter a valid contact number");
-    }
-    else if(!pass.match(passRegex)){
-      alert("Please enter a valid password");
-    }
-    else if(pass !== cpass){
-      alert("Password do not match");
-    }
-    else{
-      document.getElementById("regForm").submit();
-    }
-  }
+        if (!(fname.match(nameRegex))) {
+          alert("Please enter a valid first name");
+        }
+        else if (!lname.match(nameRegex)) {
+          alert("Please enter a valid name");
+        }
+        else if (!email.match(emailRegex)) {
+          alert("Please enter a valid email");
+        }
+        else if (!contact.match(numRegex)) {
+          alert("Please enter a valid contact number");
+        }
+        else if (!pass.match(passRegex)) {
+          alert("Please enter a valid password");
+        }
+        else if (pass !== cpass) {
+          alert("Password do not match");
+        }
+        else {
+          document.getElementById("regForm").submit();
+        }
+      }
 
-document.getElementById("subBtn").addEventListener('click',validRegForm);
-
-
-</script>
-
-<%- include('../common/footer') %>
+      document.getElementById("subBtn").addEventListener('click', validRegForm);
 
 
+    </script>
+
+    <%- include('../common/footer') %>

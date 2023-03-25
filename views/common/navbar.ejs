@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top border-bottom p-md-3">
-    <div class="container-fluid">
-        <a class="navbar-brand fs-5  fw-bolder" href="/">ID Card Generator</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top p-md-3">
+    <div class="container">
+        <a class="navbar-brand me-md-5  fs-3 fw-bolder" href="/">ID Card Generator</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation">
@@ -9,16 +9,25 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link <%= home %> fs-5" aria-current="page" href="/">Home</a>
+                    <a class="nav-link <%= home %> fs-4" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <%= about %> fs-5" href="/about">About</a>
+                    <a class="nav-link <%= about %> fs-4" href="/about">About</a>
                 </li>
                 <%
                     if (typeof user !== 'undefined'){
                 %>
                     <li class="nav-item">
-                        <a class="nav-link <%= idcard %> fs-5" href="/id-card-form">Generate Card</a>
+                        <!-- <a class="nav-link <%= idcard %> fs-4" href="/id-card-form">Generate Card</a> -->
+                        <div class="dropdown">
+                            <span class="nav-link <%= idcard %> fs-4" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                Generate Card
+                            </span>
+                            <ul class="dropdown-menu mt-md-3 fs-5" aria-labelledby="dropdownMenuButton1">
+                              <li><a class="dropdown-item" href="/id-card-form">Individual</a></li> 
+                              <li><a class="dropdown-item" href="/id-card-by-excel">Multiple</a></li> 
+                            </ul>
+                        </div>
                     </li>
                 <%
                     }
@@ -28,22 +37,21 @@
             <% 
                 if(typeof user === 'undefined'){
             %>        
-                <div class="d-flex">
-                    <a href="/user/register" class="btn btn-danger me-2">Register</a>
-                    <a href="/user/login" class="btn btn-success">Login</a>
-                </div>
+                <a href="/user/register" class="nav-link  btn btn-success text-light me-md-2 mb-md-0 mb-2">Register</a>
+                <a href="/user/login" class="nav-link btn btn-danger text-light">Login</a>
             <%
                 }
                 else{
             %>
             <div class="d-flex">
                 <div class="dropdown">
-                    <span class="" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-solid fa-user me-2"></i><%= user.name %> 
+                    <span class="fs-5 text-dark" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-user me-2 text-warning"></i><%= user.name %> 
                     </span>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li><a class="dropdown-item" href="/user/logout/">LogOut</a></li>
-                      
+                    <ul class="dropdown-menu mt-md-4" aria-labelledby="dropdownMenuButton1">
+                      <li><a class="dropdown-item" href="/user/logout/">LogOut</a></li> 
+                      <!-- <li><a class="dropdown-item" href="/user/logout/">Change Password</a></li> 
+                      <li><a class="dropdown-item" href="/user/logout/">Reset Password</a></li>  -->
                     </ul>
                 </div>
             </div>
