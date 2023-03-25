@@ -1,39 +1,41 @@
 <%- include('./common/header') %>
-<%- include('./common/navbar') %>
-    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="images/headimage.jpg" id="homepageimage">
-                <!-- <img src="images/newslideimage.jpg" id="homepageimage"> -->
+    <%- include('./common/navbar') %>
+
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="images/headimage.jpg" id="homepageimage">
                 </div>
             </div>
         </div>
-    </div>
+        
 
-    <!-- about -->
-    <div class="container-fluid d-flex align-items-center" id="about-page-container">
-        <div class="container text-center p-2 py-5">
-            <span class="text-danger fw-bolder fs-3">About Me</span>
+        <!-- about -->
+        <div class="container-fluid m-0" id="">
+            <div class="container text-center p-2 py-5">
+                <span class="text-danger fw-bolder fs-3">About Me</span>
 
-            <img src="/images/profile.jpg" class=" mx-auto d-block my-4 shadow" alt="..." style="height:200px; width:200px; border-radius:50%;">
-            <div class="container">
-                <p class=" fs-5" style="text-align:justify;">
-                    Hello! My name is Chandan Kumar, and I am the developer of This Application, <a href="/" class="text-decoration-none text-dark fw-bold">Id Card Generator</a> 
-                    is a web application that allows users to create customized identity cards with QR-Code. The
-                    purpose of the web-app is to make it easier for an organizations to create professional-looking
-                    ID cards for their employees, students, or members with QR-Code.
-                    QR-Code contains all the required information needed to indentify the identity of a student,employee, and member of an
-                    organization such as name,roll-no.,course,department,address,contact,etc.
-                </p>
-                <p class="fs-5 mb-5" style="text-align:justify;">
-                    This web-application has been developed using HTML, CSS, BootStrap, and JavaScript for the
-                    frontend, and NodeJs for the backend. It also uses MongoDB as the database to store user
-                    information and ID card templates. I developed this application as part of my BCA Course using
-                    NodeJs.
-                </p>
-                <a href="/about" class="btn btn-danger text-center text-decoration-none">Read More</a>
+                <img src="/images/profile.jpg" class=" mx-auto d-block my-4 shadow" alt="..."
+                    style="height:200px; width:200px; border-radius:50%;">
+                <div class="container">
+                    <p class=" fs-5" style="text-align:justify;">
+                        Hello! My name is Chandan Kumar, and I am the developer of This Application, <a href="/"
+                            class="text-decoration-none text-dark fw-bold">Id Card Generator</a>
+                        is a web application that allows users to create customized identity cards with QR-Code. The
+                        purpose of the web-app is to make it easier for an organizations to create professional-looking
+                        ID cards for their employees, students, or members with QR-Code.
+                        QR-Code contains all the required information needed to indentify the identity of a
+                        student, employee, and member of an organization such as Name, Roll-No., Course, Department, Address, Contact,etc.
+                    </p>
+                    <p class="fs-5 mb-5" style="text-align:justify;">
+                        This web-application has been developed using HTML, CSS, BootStrap, and JavaScript for the
+                        frontend, and NodeJs for the backend. It also uses MongoDB as the database to store user
+                        information and ID card templates. I developed this application as part of my BCA Course using
+                        NodeJs.
+                    </p>
+                    <a href="/about" class="btn btn-danger text-center text-decoration-none">Read More</a>
+                </div>
             </div>
         </div>
-    </div>
     <%- include('./common/footerSection') %>
-    <%- include('./common/footer') %>
+<%- include('./common/footer') %>
